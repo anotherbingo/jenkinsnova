@@ -46,6 +46,20 @@ pipeline {
                 bat 'npm test'
             }
         }
+
+
+        stage('Deploy') {
+
+            steps {
+
+                echo 'Starting Nova Cafe website...'
+
+                bat 'start "" /B node server.js > server.log 2>&1'
+
+                echo 'Website deployed successfully!'
+                echo 'Open http://localhost:8081'
+            }
+        }
     }
 
 
@@ -53,16 +67,17 @@ pipeline {
 
         success {
 
-            echo '================================'
-            echo ' NOVA CAFE PIPELINE SUCCESSFUL!'
-            echo '================================'
+            echo '======================================'
+            echo ' NOVA CAFE CI/CD PIPELINE SUCCESSFUL!'
+            echo ' Website: http://localhost:8081'
+            echo '======================================'
         }
 
         failure {
 
-            echo '================================'
-            echo ' NOVA CAFE PIPELINE FAILED!'
-            echo '================================'
+            echo '======================================'
+            echo ' PIPELINE FAILED!'
+            echo '======================================'
         }
     }
 }
