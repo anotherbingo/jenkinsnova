@@ -1,0 +1,329 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4efe7;
+    color: #20231e;
+}
+
+
+/* NAVBAR */
+
+header {
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 8%;
+
+    border-bottom: 1px solid #d8d0c4;
+}
+
+.logo {
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.logo span {
+    font-weight: normal;
+    margin-left: 5px;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #20231e;
+}
+
+button {
+    border: none;
+
+    background: #20231e;
+    color: white;
+
+    padding: 12px 20px;
+
+    border-radius: 30px;
+
+    cursor: pointer;
+}
+
+
+/* HERO */
+
+.hero {
+    min-height: 650px;
+
+    padding: 90px 10%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 50px;
+}
+
+.hero-text {
+    max-width: 650px;
+}
+
+.tag {
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    font-weight: bold;
+
+    color: #68705f;
+
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(55px, 7vw, 95px);
+
+    line-height: 0.95;
+
+    letter-spacing: -5px;
+}
+
+.hero h1 em {
+    font-family: Georgia, serif;
+
+    font-weight: normal;
+
+    color: #68705f;
+}
+
+.description {
+    max-width: 500px;
+
+    margin: 30px 0;
+
+    font-size: 18px;
+
+    color: #686b64;
+}
+
+.main-button {
+    display: inline-block;
+
+    text-decoration: none;
+
+    background: #20231e;
+
+    color: white;
+
+    padding: 14px 25px;
+
+    border-radius: 30px;
+}
+
+
+/* COFFEE */
+
+.coffee {
+    width: 330px;
+    height: 390px;
+
+    background: #d5dfc9;
+
+    border-radius: 170px 170px 20px 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    box-shadow: 20px 25px #ded6ca;
+}
+
+.cup {
+    font-size: 110px;
+
+    margin-bottom: 20px;
+}
+
+.coffee p {
+    font-size: 10px;
+
+    letter-spacing: 3px;
+}
+
+.coffee h2 {
+    font-family: Georgia, serif;
+
+    font-size: 28px;
+
+    margin: 8px 0;
+}
+
+
+/* MENU */
+
+.menu {
+    background: #20231e;
+
+    color: #f4efe7;
+
+    padding: 100px 10%;
+}
+
+.menu h2 {
+    font-family: Georgia, serif;
+
+    font-size: 60px;
+
+    font-weight: normal;
+
+    line-height: 1;
+}
+
+.cards {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+
+    margin-top: 60px;
+}
+
+.card {
+    border-top: 1px solid #62675e;
+
+    padding: 25px 5px;
+}
+
+.card span {
+    color: #9ba68f;
+}
+
+.card h3 {
+    font-size: 25px;
+
+    margin-top: 35px;
+}
+
+.card p {
+    color: #bfc1b9;
+
+    margin: 10px 0;
+
+    min-height: 55px;
+}
+
+.card strong {
+    color: #d5dfc9;
+
+    font-size: 18px;
+}
+
+
+/* ABOUT */
+
+.about {
+    padding: 110px 10%;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 80px;
+}
+
+.about h2 {
+    font-family: Georgia, serif;
+
+    font-size: 55px;
+
+    font-weight: normal;
+
+    line-height: 1.05;
+}
+
+.about > p {
+    align-self: end;
+
+    color: #64675f;
+
+    font-size: 19px;
+}
+
+
+/* FOOTER */
+
+footer {
+    background: #d5dfc9;
+
+    padding: 45px 10%;
+
+    display: flex;
+
+    justify-content: space-between;
+}
+
+footer p {
+    margin-top: 6px;
+
+    font-size: 13px;
+}
+
+
+/* MOBILE */
+
+@media(max-width: 800px) {
+
+    nav {
+        display: none;
+    }
+
+    .hero {
+        padding: 70px 7%;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .coffee {
+        align-self: center;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .about {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+    }
+
+    footer {
+        flex-direction: column;
+
+        gap: 25px;
+    }
+}
