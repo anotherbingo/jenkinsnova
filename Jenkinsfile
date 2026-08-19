@@ -6,21 +6,21 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                echo 'Checking out code from GitHub...'
+                echo 'Checking out project from GitHub...'
                 checkout scm
             }
         }
 
         stage('Install') {
             steps {
-                echo 'Installing project...'
+                echo 'Installing dependencies...'
                 bat 'npm install'
             }
         }
 
         stage('Build') {
             steps {
-                echo 'Building Nova Cafe website...'
+                echo 'Building application...'
                 bat 'npm run build'
             }
         }
@@ -32,38 +32,39 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+        stage('Docker Build') {
             steps {
+                echo 'Building Docker image...'
+                bat 'docker build -t nova-cafe .'
+            }
+        }
 
-                echo 'Starting Nova Cafe website...'
+        stage('Docker Run') {
+            steps {
+                echo 'Starting Docker container...'
 
-                withEnv(['JENKINS_NODE_COOKIE=dontKillMe']) {
+                bat '''
+                docker rm -f nova-cafe-container 2>nul
+                docker run -d --name nova-cafe-container -p 8082:8081 nova-cafe
+                '''
 
-                    bat '''
-                    if exist server.log del /f /q server.log
-                    start "" /B cmd /c "node server.js > server.log 2>&1"
-                    '''
-
-                }
-
-                echo 'Deployment process started.'
+                echo 'Docker container started successfully!'
             }
         }
     }
 
     post {
-
         success {
-            echo '======================================'
-            echo ' NOVA CAFE CI/CD PIPELINE SUCCESSFUL!'
-            echo ' Website: http://localhost:8081'
-            echo '======================================'
+            echo '=========================================='
+            echo ' JENKINS + DOCKER PIPELINE SUCCESSFUL!'
+            echo ' Application: http://localhost:8082'
+            echo '=========================================='
         }
 
         failure {
-            echo '======================================'
+            echo '=========================================='
             echo ' PIPELINE FAILED!'
-            echo '======================================'
+            echo '=========================================='
         }
     }
 }
